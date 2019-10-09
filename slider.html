@@ -1,0 +1,110 @@
+<div class='container'>
+  <div id='buyDiv' class='onlevel'>
+  Вы покупаете за
+  <div id="buy" class='onlevel center'></div>
+
+  </div>
+  <div id='inputDiv' class='onlevel'>
+    <div class='center'>
+      Объем (мл)
+    </div>
+    <input id="input" type="range" min="0" value="0" max="3" step="1" class="slider">
+    <div id="output" class='onlevel center'></div>
+  </div>
+  <div class='onlevel' id='sellDiv'>
+  Вы сможете продать за
+  <div id="sell" class='onlevel center'></div>
+  </div>
+</div>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+.container{
+  display: flex;
+  flex-direction: wrap;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#buy{
+  background-color: #DCDCDC;
+}
+
+#sell{
+  background-color: #DCDCDC;
+}
+
+
+
+#input{
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+#inputDiv{
+    flex-grow: 3;
+}
+
+.onlevel{
+  padding: 20px;
+}
+
+.center{
+  text-align:center;
+}
+
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 208px; /* Full-width */
+  height: 25px; /* Specified height */
+  /* background: #d3d3d3;  */
+  background: url('./scale.png'); /* Grey background */
+
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: url('./range_slider.png'); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: url('./range_slider.png'); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    
+</style>
+
+
+<script>
+var values = [[1,10,100,1000], [3,30,300,3000], [15, 150, 1500, 15000]];
+
+var input = document.getElementById('input');
+var output = document.getElementById('output');
+var buy = document.getElementById('buy');
+var sell = document.getElementById('sell');
+input.oninput = function(){
+output.innerHTML = values[0][this.value];
+buy.innerHTML = values[1][this.value];
+sell.innerHTML = values[2][this.value];
+};
+input.oninput();
+</script>
